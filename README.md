@@ -7,6 +7,8 @@ An client library for accessing [Talker](http://talkerapp.com) [API services](ht
 
 
 # Usage
+You need node built w/ TLS support (install gnutls then node).
+
 1) Get a Talker account at https://talkerapp.com/signup
 
 2) Get your Talker Token on https://user_name.talkerapp.com/settings
