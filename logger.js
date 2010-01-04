@@ -37,7 +37,7 @@ function writeLog(text) {
 // Streaming Hot Logging FTW.    
 log_client = new talker.Client(config);
 log_client.connect();
-log_client.addListener("message", function(msg) {
+log_client.addListener("message", function(obj) {
   writeLog(obj.user.name+': '+obj.content);
 });
 log_client.addListener("join", function(obj) {
