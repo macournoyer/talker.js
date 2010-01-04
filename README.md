@@ -23,7 +23,7 @@ On Mac OS X:
 # Usage
 1) Get a Talker account at https://talkerapp.com/signup
 
-2) Get your Talker Token on https://user_name.talkerapp.com/settings
+2) Get your Talker Token on https://myaccount.talkerapp.com/settings
 
 3) Either update the provided config.template.js with the values or just use an inline object to pass the configuration to a _new talker.Client(confg)_. Example:
 
