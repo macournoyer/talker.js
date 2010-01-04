@@ -1,36 +1,44 @@
-talker.js
-=========
+talker.js - A real-time Talker client for node.js
+=================================================
 
 (C) Chris Williams (voodootikigod@gmail.com) 2009, Licensed under the MIT-LICENSE
 
-An client library for accessing [Talker](http://talkerapp.com) [API services](http://talkerapp.com/api/rest). It wraps up the streaming JSON API protocol and makes it consumable through various callbacks which are passed the returned JSON object. I have provided a simple logger application, aptly named logger.js, that simply records daily logs of activity.
+An client library for accessing [Talker](http://talkerapp.com) [API services](https://talker.tenderapp.com/faqs/api/rest-api). It wraps up the streaming JSON API protocol and makes it consumable through various callbacks which are passed the returned JSON object. I have provided a simple logger application, aptly named logger.js, that simply records daily logs of activity.
 
-
-# Usage
+# Installation
 You need node built w/ TLS support (install gnutls then node).
 
+On Mac OS X:
+
+    brew install gnutls
+    brew install pkg-config
+    wget http://s3.amazonaws.com/four.livejournal/20091231/node-v0.1.24.tar.gz
+    tar xzf node-v0.1.24.tar.gz
+    cd node-v0.1.24
+    ./configure # Check that GNU TLS was detected
+    make
+    sudo make install
+    echo "Booyah"
+
+# Usage
 1) Get a Talker account at https://talkerapp.com/signup
 
 2) Get your Talker Token on https://user_name.talkerapp.com/settings
 
-3) Find the Room ID you want to connect to. This is the last part of the URL:
-
-     https://user_name.talkerapp.com/rooms/<room_id>
-
-4) Either update the provided config.template.js with the values or just use an inline object to pass the configuration to a _new talker.Client(confg)_. Example:
+3) Either update the provided config.template.js with the values or just use an inline object to pass the configuration to a _new talker.Client(confg)_. Example:
 
     var talker = require("./lib/talker"), repl= require("repl");
     log_client = new talker.Client(config);
     log_client.connect();
 
-5) Register your callbacks using the API below.
+4) Register your callbacks using the API below.
 
 
     log_client.addListener("message", function(msg) {
       sys.puts(obj.user.name+': '+obj.content);
     });
 
-6) Run using _node filename.js_ and enjoy the good life.
+5) Run using _node filename.js_ and enjoy the good life.
     
 **NOTE**: You must have either a _repl("")_ call or some other keep alive construct at the end of your code to keep the server up so the data can continually stream. REPL nicely blocks for you, so its a bit more efficient and effective, especially since you can use it to dynamically update your client.
 
@@ -79,4 +87,4 @@ Called when any kind of event (all of the above) is received. "event" is a Hash:
 
 # Credits
 
-Thanks go to [Marc-Andr&eacute; Cournoyer](http://twitter.com/macournoyer) and [Gray Haran](http://twitter.com/xutopia) for talker app. Who ever buys my next beer will get their name in shining lights here!
+Thanks go to [Marc-Andr&eacute; Cournoyer](http://twitter.com/macournoyer) and [Gary Haran](http://twitter.com/xutopia) for Talker app. Who ever buys my next beer will get their name in shining lights here!
